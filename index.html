@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SceneStream AI</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^1.4.0"
+        }
+      }
+    </script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>SceneStream AI</h1>
+    </header>
+
+    <main>
+        <div class="controls-container">
+            <h2>Craft Your Story</h2>
+            <p class="description">Describe your movie idea. Our AI will break it down into cinematic scenes and generate a video for each one.</p>
+            
+            <textarea id="prompt-input" rows="5" placeholder="e.g., A cyberpunk detective chasing a rogue android through rain-soaked neon streets."></textarea>
+            
+            <p class="description">Optionally, upload an image to set the visual tone and style for all scenes.</p>
+            <div class="file-upload-wrapper">
+                <label for="file-input" class="btn-secondary">Upload Style Image</label>
+                <input id="file-input" type="file" accept="image/*" />
+                <span id="file-name">No file chosen</span>
+            </div>
+            <img alt="Conditioning image preview" id="img" />
+
+            <button id="generate-button" class="btn-primary">Generate Movie</button>
+        </div>
+
+        <div id="status-container">
+            <p id="status" aria-live="polite">Ready to create.</p>
+        </div>
+
+        <div id="quota-error">
+          <p>Veo is available with limited free generations per day for testing.</p>
+          <p>You exceeded your current quota, to continue please use your paid API key.</p>
+          <p><button id="open-key" class="btn-secondary">Add Your API Key</button></p>
+        </div>
+
+        <section id="results-container">
+            <h2>Generated Scenes</h2>
+            <div id="scene-container">
+                <!-- Videos will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
